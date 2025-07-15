@@ -15,6 +15,7 @@ public class FactorialServerHandler extends SimpleChannelInboundHandler<BigInteg
     protected void channelRead0(ChannelHandlerContext ctx, BigInteger msg) throws Exception {
         lastMultiplier = msg;
         factorial = factorial.multiply(msg);
+        System.out.println("factorial="+factorial);
         ctx.writeAndFlush(factorial);
     }
 

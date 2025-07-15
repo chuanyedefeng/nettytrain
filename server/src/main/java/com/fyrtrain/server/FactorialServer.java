@@ -9,6 +9,9 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.ssl.SslContext;
 
+/**
+ * 阶乘服务器
+ */
 public final class FactorialServer {
 
     private final SslContext sslCtx;

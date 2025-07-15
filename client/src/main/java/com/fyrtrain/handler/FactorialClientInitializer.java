@@ -24,9 +24,11 @@ public class FactorialClientInitializer extends ChannelInitializer<SocketChannel
             pipeline.addLast(sslCtx.newHandler(ch.alloc(), FactorialClient.HOST, FactorialClient.PORT));
         }
 
-        pipeline.addLast(new BigIntegerDecoder());
-        pipeline.addLast(new NumberEncoder());
+        // read事件处理程序为 in1 -> in2
+        // write事件处理程序为 out1
+        pipeline.addLast("in1", new BigIntegerDecoder());      // 继承自ChannelInboundHandler
+        pipeline.addLast("out1", new NumberEncoder());         // 继承自ChannelOutboundHandler
+        pipeline.addLast("in2", new FactorialClientHandler()); // 继承自ChannelInboundHandler
 
-        pipeline.addLast(new FactorialClientHandler());
     }
 }

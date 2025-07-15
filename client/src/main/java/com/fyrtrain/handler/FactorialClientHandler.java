@@ -25,7 +25,8 @@ public class FactorialClientHandler extends SimpleChannelInboundHandler<BigInteg
         try {
             for (; ; ) {
                 try {
-                    answer.take();
+                    BigInteger takeEle = answer.take();
+                    System.out.println("answer.take()=" + takeEle);
                 } catch (InterruptedException e) {
                     interrupted = true;
                 }
